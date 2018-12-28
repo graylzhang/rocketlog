@@ -25,8 +25,6 @@ class RocketBackend(object):
 
         sender_list = copy.deepcopy(self.sender_list)
 
-	    logger.error('sender_list %s', sender_list)
-
         while sender_list:
             random.shuffle(sender_list)
 
@@ -36,7 +34,7 @@ class RocketBackend(object):
             try:
                 self._sendmail(receiver_list, title, content,
                                username=params['username'], password=params['password'],
-                               use_ssl=params['use_ssl'], use_tls=params['use_tls'],
+                               domain=params['domain']
                                )
                 return True
             except:
